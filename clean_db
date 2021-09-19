@@ -22,7 +22,15 @@ max stock code 'S'?
 date range 2010-12-01 through 2011-12-09 
 */
 
+SELECT * FROM invoice
+LIMIT 10;
+
 /*invoice_no starting with C% denotes a returned item*/
+
+SELECT invoice_no, item, quantity
+FROM invoice
+WHERE invoice_no LIKE 'C%'
+LIMIT 10;
 
 SELECT invoice_no, quantity
 FROM invoice
