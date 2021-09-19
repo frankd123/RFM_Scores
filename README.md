@@ -1,2 +1,31 @@
 # RFM_Scores
 Through MYSQL, this e-commerce company can segment its customers using RFM scores and can write simple queries to get lists of customer IDs. 
+
+--create database and load data from .txt
+```
+CREATE DATABASE e_commerce;
+USE e_commerce;
+CREATE TABLE invoice (
+	invoice_no varchar(100),
+    stock_code varchar(64),
+    item varchar(64),
+    quantity INT,
+    invoice_date TIMESTAMP,
+    unit_price DECIMAL(10,2),
+	customer_id INT,
+    country varchar(32)
+);
+
+SET GLOBAL local_infile=1;
+
+LOAD DATA  INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/e_commerce_data.txt'
+INTO TABLE invoice
+CHARACTER SET latin1
+fields terminated by '	'
+lines terminated by '\r\n'
+ignore 1 lines;
+
+SELECT * FROM invoice
+LIMIT 10;
+```
+![](images/invoice-table.PNG)
