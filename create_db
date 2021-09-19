@@ -20,3 +20,8 @@ CHARACTER SET latin1
 fields terminated by '	'
 lines terminated by '\r\n'
 ignore 1 lines;
+
+SELECT * FROM invoice
+LIMIT 10;
+
+![](images/invoice-table.PNG)
