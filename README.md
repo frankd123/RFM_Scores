@@ -1,5 +1,8 @@
 # RFM_Scores
-Through MYSQL, this e-commerce company can segment its customers using RFM scores and can write simple queries to get lists of customer IDs. 
+## Objectives:
+* Create RFM scores for each individual customer ID
+* Allow marketing team to segment customers based on purchase behavior
+* Improve the marketing team's efficiency and accuracy on future targeted promotions
 
 ## Create database and load data
 ```
