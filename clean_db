@@ -1,0 +1,57 @@
+/*find min and max of some columns to see if any values might not be valid*/
+
+SELECT min(customer_id), 
+max(customer_id), 
+min(invoice_no),
+max(invoice_no),
+min(quantity), 
+max(quantity), 
+min(unit_price), 
+max(unit_price),
+min(stock_code),
+max(stock_code),
+min(invoice_date),
+max(invoice_date)
+FROM invoice;
+
+/*
+customer_id shouldn't be 0
+max invoice number is suspicious, see top 20
+min/max quantity are same, see top and bottom 20
+max stock code 'S'?
+date range 2010-12-01 through 2011-12-09 
+*/
+
+/*invoice_no starting with C% denotes a returned item*/
+
+SELECT invoice_no, quantity
+FROM invoice
+WHERE invoice_no LIKE 'C%'
+AND quantity > 0;
+
+/*invoice_no starting with A% denotes 'Adjust bad payment' */
+
+SELECT *
+FROM invoice
+WHERE invoice_no LIKE 'A%';
+
+DELETE FROM invoice
+WHERE invoice_no LIKE 'A%';
+
+/*DISTINCT stock_code = 3957*/
+
+SELECT COUNT(DISTINCT stock_code)
+FROM invoice;
+
+/*update country names*/
+
+SELECT DISTINCT country
+FROM invoice;
+
+UPDATE invoice
+SET country = 'Republic of South Africa'
+WHERE country = 'RSA';
+
+UPDATE invoice
+SET country = 'Ireland'
+WHERE country = 'EIRE';
