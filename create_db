@@ -1,0 +1,22 @@
+/*create database and load data from .txt*/
+CREATE DATABASE e_commerce;
+USE e_commerce;
+CREATE TABLE invoice (
+	invoice_no varchar(100),
+    stock_code varchar(64),
+    item varchar(64),
+    quantity INT,
+    invoice_date TIMESTAMP,
+    unit_price DECIMAL(10,2),
+	customer_id INT,
+    country varchar(32)
+);
+
+SET GLOBAL local_infile=1;
+
+LOAD DATA  INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/e_commerce_data.txt'
+INTO TABLE invoice
+CHARACTER SET latin1
+fields terminated by '	'
+lines terminated by '\r\n'
+ignore 1 lines;
